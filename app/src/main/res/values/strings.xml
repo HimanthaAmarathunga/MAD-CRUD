@@ -1,0 +1,158 @@
+<resources>
+    //IT19007120
+    <string name="app_name">AnyHelp</string>
+    <string name="FirstPage_SignUp_button">SIGN UP</string>
+    <string name="FirstPage_login_button">LOGIN</string>
+    <string name="RegisterChoosePage_Custometr_button">Customer</string>
+    <string name="RegisterChoosePage_ServiceProvider_button">Service Provider</string>
+    <string name="LoginPage_email_input">Email</string>
+    <string name="LoginPage_password_input">Password</string>
+    <string name="LoginPage_login_button">Login</string>
+    <string name="Header1">Register Here</string>
+    <string name="InputFname">First Name</string>
+    <string name="inputLname">Last Name</string>
+    <string name="inputEmail">E-mail</string>
+    <string name="inputPhone">Phone number</string>
+    <string name="inputPassword">Password</string>
+    <string name="inputRepassword">Confirm password</string>
+    <string name="message1">Already have an account?</string>
+    <string name="link1">Login</string>
+    <string name="link2">Register</string>
+    <string name="heading1">Start Career as Tecacher</string>
+    <string name="inputSubject">Select Subject</string>
+    <string name="inputGrade">Grade</string>
+    <string name="inputLocation">Location</string>
+    <string name="inputTime">Available Time</string>
+    <string name="inputQualification">Qualifications</string>
+    <string name="inputDescription">Description</string>
+    <string name="nextButton">NEXT</string>
+    <string name="Teacher_profile_Name">Name</string>
+    <string name="Teacher_prodfile_Heding">My Profile</string>
+    <string name="teacher_profile_name">My Profile</string>
+    <string name="teacher_profile_profession">Proffession</string>
+    <string name="teacher_profile_phone">Phone number</string>
+    <string name="teacher_profile_subjects">Subjects</string>
+    <string name="teacher_profile_AvailableTime">Available time</string>
+    <string name="teacher_profile_Location">Location</string>
+    <string name="teacher_profile_update">Update</string>
+    <string name="teacher_profile_CheckAppointments">Check Appointments</string>
+    <string name="teacher_profile_Qualifications">Qualifications</string>
+    <string name="Choose_Register_type">Select your registration type</string>
+    <string name="First_page_Heading">Any Help</string>
+    <string name="login_page_Heading">Login</string>
+    <string name="teacher_profile_heading">My Profile</string>
+    <string name="teacher_appointments_heading">Appointments</string>
+    <string name="TeacherUpdateBtn">Update</string>
+    <string name="teacherUpdateHeading">Update</string>
+
+    //IT18013160
+    <string name="addAppointment_next">Next</string>
+    <string name="update">Update</string>
+    <string-array name="addAppointment_location_arrays">
+        <item>Colombo</item>
+        <item>Gampaha</item>
+        <item>Kaluthara</item>
+        <item>Galle</item>
+        <item>Negombo</item>
+    </string-array>
+    <string name="addAppointment_heading">Add a Appointment</string>
+    <string name="addAppointment_date">Date</string>
+    <string name="addAppointment_task">Task</string>
+    <string name="addAppointment_location">Location</string>
+    <string name="plumber_career_heading">Start Career as Plumber</string>
+    <string name="Update_details">Update Details</string>
+    <string name="plumber_career_name">Name</string>
+    <string name="plumber_career_contactNumber">Contact Number</string>
+    <string name="plumber_career_qualification">Qualification</string>
+    <string name="plumber_career_description">Description</string>
+    <string name="plumber_career_availableTime">Available Time</string>
+    <string-array name="plumber_career_availableTime_arrays">
+        <item>Day</item>
+        <item>Night</item>
+        <item>Day/Night</item>
+    </string-array>
+    <string name="my_appointments_heading">My Appointments</string>
+    <string name="career_page_name">Name</string>
+    <string name="career_page_profession">Profession</string>
+    <string name="career_page_Location">Location</string>
+    <string name="career_page_description">Description</string>
+    <string name="career_page_appointments">Appointments</string>
+    <string name="career_page_addAAppointment">Add an Appointment</string>
+    <string name="career_page_call">Call</string>
+    <string name="delete_account_btn">Delete my account</string>
+    <string name="plumbers">Plumber</string>
+    <string name="teachers">Teacher</string>
+    <string name="nurse">Nurse</string>
+    <string name="mechanic">Mechanic</string>
+    <string name="menu">Menu</string>
+
+
+    //IT19030272
+    <string name="Nurse_career_heading">Start Career as Nurse </string>
+    <string name="Nurse_career_category_input">Service Categories</string>
+    <string name="Nurse_career_gender_input">Gender</string>
+    <string name="Nurse_career_location_input">Location</string>
+    <string name="Nurse_career_Available_time_input">Available Time</string>
+    <string name="Nurse_career_Qulifications_input">Qualifications</string>
+    <string name="Nurse_career_Next_button">NEXT</string>
+    <string name="Service_provider_Fname">First Name</string>
+    <string name="Service_provider_Lname">Last Name</string>
+    <string name="Service_provider_Profession">Profession</string>
+    <string name="Service_provider_Email">Email</string>
+    <string name="Service_provider_PhoneNumber">Phone Number</string>
+    <string name="Service_provider_password">Password</string>
+    <string name="Service_provider_RePassword">Confirm Password</string>
+    <string name="Service_provider_heading">Register as Service Provider</string>
+
+    <string name="Nurse_profile_categories">Service Categories</string>
+    <string name="Nurse_profile_Gender">Gender</string>
+    <string name="Nurse_profile_Location">Location</string>
+    <string name="Nurse_profile_AvailableTime">Available Time</string>
+    <string name="Nurse_profile_Qualifications">Qualifications</string>
+    <string name="Nurse_profile_Update_Button">UPDATE</string>
+    <string name="Nurse_profile_CheckAppoinments_Button">CHECK APPOINTMENTS</string>
+
+
+    //IT19035086
+    <string name="RegisterHeading">Start Career as a Mechanic</string>
+    <string name="SelectField">Select Field</string>
+    <string name="Location">Location</string>
+    <string name="AvailableTime">Available Time</string>
+    <string name="Qualifications">Qualifications</string>
+    <string name="Description">Description</string>
+    <string name="MyProfile">My Profile</string>
+    <string name="DeleteAccount">Delete My Account</string>
+    <string name="PhoneNumber">Phone Number</string>
+    <string name="Update">Update</string>
+    <string name="CheckAppointment">Check Appointment</string>
+    <string name="AnyHelp">Any Help</string>
+    <string name="Payment">Payment</string>
+    <string name="CardNumber">Card Number</string>
+    <string name="NameOnCard">Name On Card</string>
+    <string name="ExpireDate">Expire Date</string>
+    <string name="CVV">CVV</string>
+    <string name="StartCareer">Start Career</string>
+    <string name="EditProfile">Edit Profile</string>
+    <string name="next">Next</string>
+    <string name="Car">Car</string>
+    <string name="Van">Van</string>
+    <string name="Bike">Bike</string>
+    <string name="Truck">Truck</string>
+    <string name="Industrial_Machinery">Industrial Machinery</string>
+    <string name="Appointments">Appointments</string>
+    <string name="DeleteAppointment">Delete Appointment</string>
+
+    <string-array name="Location_arrays">
+        <item>Colombo</item>
+        <item>Gampaha</item>
+        <item>Kaluthara</item>
+        <item>Galle</item>
+        <item>Negombo</item>
+    </string-array>
+
+    <string-array name="Time_arrays">
+        <item>Day</item>
+        <item>Night</item>
+        <item>Day/Night</item>
+    </string-array>
+</resources>

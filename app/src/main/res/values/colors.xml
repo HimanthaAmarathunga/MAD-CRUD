@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#00a895</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="colorActionbarColor">#03DAC5</color>
+    <color name="buttonBackground">#03DAC5</color>
+    <color name="tableHeader">#66fff8</color>
+    <color name="tableRaw">#e0f2f1</color>
+</resources>

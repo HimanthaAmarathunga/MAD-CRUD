@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".PaymentActivity">
+
+        <RelativeLayout
+            android:id="@+id/action_bar"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/colorActionbarColor"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/ivBack"
+                style="@style/TextAppearance.AppCompat.Widget.ActionBar.Menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="16dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:scaleType="center"
+                android:visibility="visible"
+                app:srcCompat="@drawable/ic_back_arrow" />
+
+            <TextView
+                android:id="@+id/txt_title"
+                style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:scaleType="center"
+                android:text="@string/AnyHelp"
+                android:textColor="#000000"
+                android:textSize="30dp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="330dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                app:srcCompat="@drawable/avatar"
+                tools:layout_editor_absoluteX="343dp"
+                tools:layout_editor_absoluteY="120dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp">
+            <TextView
+                android:id="@+id/textViewPayment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Payment"
+                android:textColor="#000000"
+                android:textSize="30dp"
+                tools:layout_editor_absoluteX="47dp"
+                tools:layout_editor_absoluteY="169dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:orientation="horizontal">
+
+
+
+            <TextView
+                android:id="@+id/textViewCardNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/CardNumber"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                tools:layout_editor_absoluteX="23dp"
+                tools:layout_editor_absoluteY="335dp" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_text_bg"
+                android:lines="2"
+                android:layout_weight="2"
+                android:layout_marginLeft="15dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewCardName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/NameOnCard"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                tools:layout_editor_absoluteX="23dp"
+                tools:layout_editor_absoluteY="277dp" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_text_bg"
+                android:lines="2"
+                android:layout_weight="2"
+                android:layout_marginLeft="15dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/textViewExpDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ExpireDate"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                tools:layout_editor_absoluteX="23dp"
+                tools:layout_editor_absoluteY="390dp" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_text_bg"
+                android:lines="2"
+                android:layout_weight="2"
+                android:layout_marginLeft="15dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/textViewCVV"
+                android:layout_width="45dp"
+                android:layout_height="31dp"
+                android:text="@string/CVV"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                tools:layout_editor_absoluteX="23dp"
+                tools:layout_editor_absoluteY="450dp" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_text_bg"
+                android:lines="2"
+                android:layout_weight="2"
+                android:layout_marginLeft="15dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="1dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="191dp"
+                android:layout_height="63dp"
+                app:srcCompat="@drawable/trust_icons"
+                tools:layout_editor_absoluteX="-26dp"
+                tools:layout_editor_absoluteY="502dp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/buttonStartCareer"
+            android:layout_width="411dp"
+            android:layout_height="58dp"
+            android:background="@color/buttonBackground"
+            android:text="@string/StartCareer"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="620dp" />
+
+    </LinearLayout>
+</ScrollView>

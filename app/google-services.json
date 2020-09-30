@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "175097861953",
+    "firebase_url": "https://anyhelp-15666.firebaseio.com",
+    "project_id": "anyhelp-15666",
+    "storage_bucket": "anyhelp-15666.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:175097861953:android:3004a5da8adc3a05daf3c0",
+        "android_client_info": {
+          "package_name": "com.rasanjana.anyhelp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "175097861953-m7sdlp22ruk1dgbajnaop202phebjafp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB87skf1m5mlurz_ZNLpvTfsK-fjzMJBuY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "175097861953-m7sdlp22ruk1dgbajnaop202phebjafp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
