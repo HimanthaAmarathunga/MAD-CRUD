@@ -17,22 +17,25 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class MechanicProfileActivity extends AppCompatActivity {
+    final static String key ="";
     private Button button1, button2, button3;
     private ImageView imageArrow, imageProfile;
     TextView textViewNOut, textViewProfOut, textViewLocOut, textViewPhoneOut, textViewFieldsOut, textViewTimeOut, textViewQualiOut, textViewDescOut;
     DatabaseReference dbRef;
-    Mechanic mechanic;
+    Mechanic mech;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mechanic_profile);
 
-        // textViewNOut = findViewById(R.id.textViewNOut);
+//         textViewNOut = findViewById(R.id.textViewNOut);
         textViewProfOut = findViewById(R.id.textViewProfOut);
         textViewLocOut =  findViewById(R.id.textViewLocOut);
-        // textViewPhoneOut = findViewById(R.id.textViewPhoneOut);
+//         textViewPhoneOut = findViewById(R.id.textViewPhoneOut);
         textViewFieldsOut = findViewById(R.id.textViewFieldsOut);
         textViewTimeOut =  findViewById(R.id.textViewTimeOut);
         textViewQualiOut = findViewById(R.id.textViewQualiOut);
@@ -67,8 +70,8 @@ public class MechanicProfileActivity extends AppCompatActivity {
                 showRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.hasChild("-MINWTtdihQ8VRnRceVH")) {
-                            dbRef = FirebaseDatabase.getInstance().getReference().child("Mechanic").child("-MINWTtdihQ8VRnRceVH");
+                        if (dataSnapshot.hasChild(key)) {
+                            dbRef = FirebaseDatabase.getInstance().getReference().child("Mechanic").child("-MIoGg-FF-dplTzEuy5Q");
                             dbRef.removeValue();
 
                             Toast.makeText(getApplicationContext(), "Data Successfully Deleted", Toast.LENGTH_SHORT).show();
@@ -85,25 +88,32 @@ public class MechanicProfileActivity extends AppCompatActivity {
             }
         });
 
-
-        dbRef = FirebaseDatabase.getInstance().getReference().child("Mechanic").child("-MINWTtdihQ8VRnRceVH");
+        dbRef = FirebaseDatabase.getInstance().getReference().child("Mechanic").child("-MIoGg-FF-dplTzEuy5Q");
         dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 if(dataSnapshot.hasChildren()) {
-                    //Add name and profession
+                    mech = dataSnapshot.getValue(Mechanic.class);
+                    mech.setKey(dataSnapshot.getKey());
+
+//                    Add name and profession
+
+                    textViewNOut.setText(mech.getName().toString());
+
                     textViewProfOut.setText("Mechanic");
                     textViewLocOut.setText(dataSnapshot.child("location").getValue().toString());
 
-                    //Add Phone Number
+//                    Add Phone Number
+                    textViewPhoneOut.setText(mech.getContactNo().toString());
 
-                    //textViewFieldsOut.setText(dataSnapshot.child("Fields").getValue().toString());
-//                    ArrayList<String> Fields = (ArrayList<String>) dataSnapshot.child("fields").getValue();
-//                    String text = "";
-//                    for (String Field : Fields ) {
-//                        text += Field + " ";
-//                    }
+//                    Field Array input
+                    ArrayList<String> FieldsList = (ArrayList<String>) dataSnapshot.child("fields").getValue();
+                    String text = "";
+                    for (String textViewFieldsOut : FieldsList ) {
+                        text += textViewFieldsOut + " ";
+                    }
+                    textViewFieldsOut.setText(text);
                     textViewTimeOut.setText(dataSnapshot.child("time").getValue().toString());
                     textViewQualiOut.setText(dataSnapshot.child("qualifications").getValue().toString());
                     textViewDescOut.setText(dataSnapshot.child("description").getValue().toString());
@@ -130,16 +140,20 @@ public class MechanicProfileActivity extends AppCompatActivity {
     }
 
     private void openMechanicUpdate() {
-        Intent intent = new Intent(this, MechanicEditProfile.class);
-        startActivity(intent);
+        Intent intent1 = new Intent(this, MechanicEditProfile.class);
+        String id = mech.getKey();
+        intent1.putExtra(key, id);
+        startActivity(intent1);
     }
     private void openAppointments() {
-        Intent intent = new Intent(this, MyAppointments.class);
-        startActivity(intent);
+        Intent intent2 = new Intent(this, MechanicAppointment.class);
+        String id = mech.getKey();
+        intent2.putExtra(key, id);
+        startActivity(intent2);
     }
     private void goBack() {
-        Intent intent = new Intent(this, MechanicRegistration.class); //Have to put a dynamic onClick
-        startActivity(intent);
+        Intent intent3 = new Intent(this, MechanicRegistration.class); //Have to put a dynamic onClick
+        startActivity(intent3);
     }
     private void navigateToRegistration() {
         Intent intent = new Intent(this, MechanicRegistration.class);

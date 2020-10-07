@@ -1,38 +1,47 @@
 package com.rasanjana.anyhelp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MechanicRegistration extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class MechanicRegistration extends AppCompatActivity {
     Button buttonNxt;
     CheckBox checkBoxCar, checkBoxVan, checkBoxBike, checkBoxTruck, checkBoxMachines;
     Spinner spinnerLocation, spinnerTime;
     EditText editTextQualifications, editTextDescription;
+    ImageView imageView;
     DatabaseReference dbRef;
     Mechanic mech;
     int i=0;
+    private static final String TAG = "MechanicRegistration";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.i(TAG, "onCreate: ");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_mechanic_registration);
 
         checkBoxCar = findViewById(R.id.checkBoxCar);
         checkBoxVan = findViewById(R.id.checkBoxVan);
@@ -51,45 +60,48 @@ public class MechanicRegistration extends AppCompatActivity implements AdapterVi
 
         editTextQualifications = findViewById(R.id.editTextQualifications);
         editTextDescription = findViewById(R.id.editTextDescription);
-        buttonNxt = findViewById(R.id.btnNext);
+        buttonNxt = findViewById(R.id.btnNextMechanic);
 
         mech = new Mechanic();
 
         dbRef = FirebaseDatabase.getInstance().getReference().child("Mechanic");
+        dbRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    i = (int) snapshot.getChildrenCount();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         buttonNxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadPaymentPage();   //Must change to Payment class
-                Toast.makeText(getApplicationContext(),"Account Created",
-                        Toast.LENGTH_LONG).show();
+
                 List<String> Fields = new ArrayList<>();
 
-                try {
                     if (checkBoxCar.isChecked()) {
                         Fields.add("Car");
-                    }else {
-                        //
                     }
+                Log.i(TAG, "car: "+checkBoxCar.isChecked());
                     if (checkBoxVan.isChecked()) {
                         Fields.add("Van");
-                    }else {
-                        //
                     }
                     if (checkBoxBike.isChecked()) {
                         Fields.add("Bike");
-                    }else {
-                        //
                     }
                     if (checkBoxTruck.isChecked()) {
                         Fields.add("Truck");
-                    }else {
-                        //
                     }
                     if (checkBoxMachines.isChecked()) {
                         Fields.add("Industrial Machinery");
-                    }else {
-                        //
                     }
+                try {
                     if (TextUtils.isEmpty(spinnerLocation.getSelectedItem().toString())) {
                         Toast.makeText(MechanicRegistration.this, "Select Location", Toast.LENGTH_SHORT).show();
                     }else if ((TextUtils.isEmpty(spinnerTime.getSelectedItem().toString()))) {
@@ -103,18 +115,29 @@ public class MechanicRegistration extends AppCompatActivity implements AdapterVi
                         mech.setTime(spinnerTime.getSelectedItem().toString().trim());
                         mech.setQualifications(editTextQualifications.getText().toString().trim());
                         mech.setDescription(editTextDescription.getText().toString().trim());
+                        mech.setFields(Fields);
+
+                        dbRef.push().setValue(mech);
+                        Toast.makeText(getApplicationContext(),"Account Created", Toast.LENGTH_LONG).show();
+                        Log.i(TAG, "Mech: "+mech.getFields()+" "+mech.getDescription());
                     }
-                    dbRef.push().setValue(mech);
+
                 }
-                catch (Exception e) {
-                    e.printStackTrace();
+                catch (NumberFormatException e) {
+                   // e.printStackTrace();
                 }
 
+                loadPaymentPage();   //Must change to Payment class
 
+                imageView = (ImageView) findViewById(R.id.ivBack);
+                imageView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        goBack();
+                    }
+                });
             }
         });
-
-
     }
 
     private void loadPaymentPage() {
@@ -123,14 +146,19 @@ public class MechanicRegistration extends AppCompatActivity implements AdapterVi
 
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        String text = adapterView.getItemAtPosition(i).toString();
-        Toast.makeText(adapterView.getContext(), text, Toast.LENGTH_SHORT).show();
+    private void goBack() {
+        Intent intent = new Intent(this, MechanicRegistration.class); //MUST CHANGE TO APPROPRIATE CLASS
+        startActivity(intent);
     }
 
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
-    }
+//    @Override
+//    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//        String text = adapterView.getItemAtPosition(i).toString();
+//        Toast.makeText(adapterView.getContext(), text, Toast.LENGTH_SHORT).show();
+//    }
+//
+//    @Override
+//    public void onNothingSelected(AdapterView<?> adapterView) {
+//
+//    }
 }

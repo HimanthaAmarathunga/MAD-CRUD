@@ -22,14 +22,18 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MechanicEditProfile extends AppCompatActivity {
-    private Button button;
+    Button buttonUpdate;
     private ImageView imageView;
     CheckBox checkBoxCar, checkBoxVan, checkBoxBike, checkBoxTruck, checkBoxMachines;
     Spinner spinnerLocation, spinnerTime;
-    ArrayAdapter<String> adapter;
+    ArrayAdapter<CharSequence> locationAdapter, timeAdapter;
     EditText editTextQualifications, editTextDescription;
-    private static final String TAG = "Mechanic Update Form";
+    private static final String TAG = "MechanicEditProfile";
+    String key;
     DatabaseReference upRef;
     Mechanic mech;
 
@@ -38,78 +42,80 @@ public class MechanicEditProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mechanic_edit_profile);
 
+        Intent intent = new Intent();
+        key = intent.getStringExtra(MechanicProfileActivity.key);
+
         checkBoxCar = findViewById(R.id.checkBoxCar);
         checkBoxVan = findViewById(R.id.checkBoxVan);
         checkBoxBike = findViewById(R.id.checkBoxBike);
         checkBoxTruck = findViewById(R.id.checkBoxTruck);
         checkBoxMachines = findViewById(R.id.checkBoxMachines);
 
-        final String f1 = "Car";
-        final String f2 = "Van";
-        final String f3 = "Bike";
-        final String f4 = "Truck";
-        final String f5 = "Industrial Machinery";
+        editTextQualifications = findViewById(R.id.etEditQualifications);
+        editTextDescription = findViewById(R.id.etEditDescription);
 
-        spinnerLocation = (Spinner) findViewById(R.id.spinnerLocation);
-        spinnerTime = (Spinner) findViewById(R.id.spinnerTime);
+        spinnerLocation = findViewById(R.id.spEditLocation);
+        spinnerTime = findViewById(R.id.spEditTime);
 
-        editTextQualifications = findViewById(R.id.editTextQualifications);
-        editTextDescription = findViewById(R.id.editTextDescription);
+        locationAdapter = ArrayAdapter.createFromResource(MechanicEditProfile.this,
+                R.array.Location_arrays, android.R.layout.simple_spinner_item);
+        spinnerLocation.setAdapter(locationAdapter);
 
-        upRef = FirebaseDatabase.getInstance().getReference().child("-MII9fnWUEKXDtSpsNZz");
+        timeAdapter =ArrayAdapter.createFromResource(MechanicEditProfile.this,
+                R.array.Time_arrays, android.R.layout.simple_spinner_item);
+        spinnerTime.setAdapter(timeAdapter);
+
+        upRef = FirebaseDatabase.getInstance().getReference().child("Mechanic").child("-MIoGg-FF-dplTzEuy5Q");
         upRef.addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                if (dataSnapshot.hasChild("-MII9fnWUEKXDtSpsNZz")) {
-//                    try {
-//                        if (checkBoxCar.isChecked()) {
-//                            mech.setCar(f1);
-//                        }else {
-//                            //
-//                        }
-//                        if (checkBoxVan.isChecked()) {
-//                            mech.setVan(f2);
-//                        }else {
-//                            //
-//                        }
-//                        if (checkBoxBike.isChecked()) {
-//                            mech.setBike(f3);
-//                        }else {
-//                            //
-//                        }
-//                        if (checkBoxTruck.isChecked()) {
-//                            mech.setTruck(f4);
-//                        }else {
-//                            //
-//                        }
-//                        if (checkBoxMachines.isChecked()) {
-//                            mech.setMachinery(f5);
-//                        }else {
-//                            //
-//                        }
-                if (TextUtils.isEmpty(spinnerLocation.getSelectedItem().toString())) {
-                    Toast.makeText(MechanicEditProfile.this, "Select Location", Toast.LENGTH_SHORT).show();
-                } else if ((TextUtils.isEmpty(spinnerTime.getSelectedItem().toString()))) {
-                    Toast.makeText(MechanicEditProfile.this, "Select Time", Toast.LENGTH_SHORT).show();
-                } else if ((TextUtils.isEmpty(editTextQualifications.getText().toString()))) {
-                    Toast.makeText(MechanicEditProfile.this, "Enter Qualifications", Toast.LENGTH_SHORT).show();
-                } else if ((TextUtils.isEmpty(editTextDescription.getText().toString()))) {
-                    Toast.makeText(MechanicEditProfile.this, "Enter Description", Toast.LENGTH_SHORT).show();
-                } else {
-                    mech.setLocation(spinnerLocation.getSelectedItem().toString().trim());
-                    mech.setTime(spinnerTime.getSelectedItem().toString().trim());
-                    mech.setQualifications(editTextQualifications.getText().toString().trim());
-                    mech.setDescription(editTextDescription.getText().toString().trim());
-                }
+                Log.i(TAG, "OnDataChange");
 
+                imageView = (ImageView) findViewById(R.id.ivBack);
+                imageView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        goBack();
+                    }
+                });
 
-//                    }catch (Exception e) {
-//                        e.printStackTrace();
-//                    }
-//                }else {
-//                    Toast.makeText(getApplicationContext(), "No Source to Update", Toast.LENGTH_SHORT).show();
-//                }
+                Mechanic mech = dataSnapshot.getValue(Mechanic.class);
+
+                ArrayList<String> FieldsList= (ArrayList<String>) dataSnapshot.child("fields").getValue();
+                String text =" ";
+                for (String Fields : FieldsList) {
+                    text += FieldsList + " ";
+
+                        if (Fields.equals("Car")) {
+                            checkBoxCar.setChecked(true);
+                            Log.i(TAG, "onDataChange: location "+mech.getLocation());
+                        }
+                        if (Fields.equals("Van")) {
+                            checkBoxVan.setChecked(true);
+                        }
+                        if (Fields.equals("Bike")) {
+                            checkBoxBike.setChecked(true);
+                        }
+                        if (Fields.equals("Truck")) {
+                            checkBoxTruck.setChecked(true);
+                        }
+
+                        Log.i(TAG, "onDataChange 2: location "+mech.getLocation());
+                        if (Fields.equals("Industrial Machinery")) {
+                            checkBoxMachines.setChecked(true);
+                        }else {
+
+                        int index = locationAdapter.getPosition(mech.getLocation());
+                        spinnerLocation.setSelection(index);
+
+                        int index2 = timeAdapter.getPosition(mech.getTime());
+                        spinnerTime.setSelection(index2);
+
+                        editTextQualifications.setText(mech.getQualifications());
+                        editTextDescription.setText(mech.getDescription());
+                       }
+                   }
             }
 
             @Override
@@ -118,60 +124,54 @@ public class MechanicEditProfile extends AppCompatActivity {
             }
         });
 
-        button = (Button) findViewById(R.id.buttonUpdateEP);
-        button.setOnClickListener(new View.OnClickListener() {
+        buttonUpdate = (Button) findViewById(R.id.buttonUpdateEP);
+        buttonUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openMechanicProfile();
-                Toast.makeText(getApplicationContext(), "Account Edited",
-                        Toast.LENGTH_SHORT).show();
+//                openMechanicProfile();
+                Log.i(TAG,"onClick");
+                mech = new Mechanic();
 
-//                //Must enter the CheckBoxes
+                List<String> Fields = new ArrayList<>();
+
+                if (checkBoxCar.isChecked()) {
+                    Fields.add("Car");
+                }
+                Log.i(TAG, "car: "+checkBoxCar.isChecked());
+                if (checkBoxVan.isChecked()) {
+                    Fields.add("Van");
+                }
+                if (checkBoxBike.isChecked()) {
+                    Fields.add("Bike");
+                }
+                if (checkBoxTruck.isChecked()) {
+                    Fields.add("Truck");
+                }
+                if (checkBoxMachines.isChecked()) {
+                    Fields.add("Industrial Machinery");
+                }
                 mech.setLocation(spinnerLocation.getSelectedItem().toString().trim());
                 mech.setTime(spinnerTime.getSelectedItem().toString().trim());
+
                 mech.setQualifications(editTextQualifications.getText().toString().trim());
                 mech.setDescription(editTextDescription.getText().toString().trim());
 
-                DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference().child("Mechanic").child("-MII9fnWUEKXDtSpsNZz");
-                dbRef.setValue(mech);
+                upRef.setValue(mech);
 
-                //Feedback to the user
+//               Feedback to the user
                 Toast.makeText(getApplicationContext(), "Data Updated Successfully", Toast.LENGTH_SHORT).show();
+                finish();
             }
         });
-
-        imageView = (ImageView) findViewById(R.id.ivBack);
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                goBack();
-            }
-        });
-
     }
 
-    private void openMechanicProfile() {
-        Intent intent = new Intent(MechanicEditProfile.this, MechanicProfileActivity.class);
-        startActivity(intent);
-    }
+//    private void openMechanicProfile() {
+//        Intent intent = new Intent(MechanicEditProfile.this, MechanicProfileActivity.class);
+//        startActivity(intent);
+//    }
 
     private void goBack() {
         Intent intent = new Intent(this, MechanicProfileActivity.class);
         startActivity(intent);
-    }
-
-    public void update(View view) {
-        if (anyDataChanged()) {
-            Toast.makeText(this, "Data has been updated", Toast.LENGTH_LONG).show();
-        }
-    }
-
-    private boolean anyDataChanged() {
-        if (!editTextQualifications.equals(editTextQualifications.getText().toString())) {
-            upRef.child(String.valueOf(editTextQualifications));
-        } else {
-            return false;
-        }
-        return false;
     }
 }

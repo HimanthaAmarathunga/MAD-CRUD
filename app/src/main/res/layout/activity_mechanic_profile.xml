@@ -56,17 +56,6 @@
                 android:textColor="#000000"
                 android:textSize="20dp" />
 
-            <!--        <TextView-->
-            <!--            android:id="@+id/textView8"-->
-            <!--            android:layout_width="wrap_content"-->
-            <!--            android:layout_height="wrap_content"-->
-            <!--            android:layout_marginLeft="150dp"-->
-            <!--            android:text="@string/DeleteAccount"-->
-            <!--            android:textColor="#000000"-->
-            <!--            android:textSize="15dp"-->
-            <!--            tools:layout_editor_absoluteX="280dp"-->
-            <!--            tools:layout_editor_absoluteY="73dp" />-->
-
             <Button
                 android:id="@+id/btnDelete"
                 android:layout_width="wrap_content"
@@ -128,7 +117,7 @@
                         android:layout_marginLeft="15dp"
                         android:layout_weight="2"
                         android:textColor="#000000"
-                        android:textSize="15dp"
+                        android:textSize="17dp"
                         tools:layout_editor_absoluteX="159dp"
                         tools:layout_editor_absoluteY="116dp" />
                 </LinearLayout>
@@ -156,7 +145,7 @@
                         android:layout_marginLeft="15dp"
                         android:layout_weight="2"
                         android:textColor="#000000"
-                        android:textSize="15dp"
+                        android:textSize="17dp"
                         tools:layout_editor_absoluteX="159dp"
                         tools:layout_editor_absoluteY="116dp" />
 
@@ -185,7 +174,7 @@
                         android:layout_marginLeft="15dp"
                         android:layout_weight="2"
                         android:textColor="#000000"
-                        android:textSize="15dp"
+                        android:textSize="17dp"
                         tools:layout_editor_absoluteX="159dp"
                         tools:layout_editor_absoluteY="116dp" />
                 </LinearLayout>
@@ -213,7 +202,7 @@
                         android:layout_marginLeft="15dp"
                         android:layout_weight="2"
                         android:textColor="#000000"
-                        android:textSize="15dp"
+                        android:textSize="17dp"
                         tools:layout_editor_absoluteX="159dp"
                         tools:layout_editor_absoluteY="116dp" />
 
@@ -229,7 +218,6 @@
             android:layout_marginTop="15dp"
             android:layout_marginEnd="15dp"
             android:layout_marginRight="15dp"
-            android:layout_marginBottom="15dp"
             android:orientation="horizontal">
 
             <TextView
@@ -249,7 +237,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_weight="2"
                 android:textColor="#000000"
-                android:textSize="15dp"
+                android:textSize="17dp"
                 tools:layout_editor_absoluteX="159dp"
                 tools:layout_editor_absoluteY="116dp" />
 
@@ -263,7 +251,6 @@
             android:layout_marginTop="15dp"
             android:layout_marginEnd="15dp"
             android:layout_marginRight="15dp"
-            android:layout_marginBottom="15dp"
             android:orientation="horizontal">
 
             <TextView
@@ -283,7 +270,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_weight="2"
                 android:textColor="#000000"
-                android:textSize="15dp"
+                android:textSize="17dp"
                 tools:layout_editor_absoluteX="159dp"
                 tools:layout_editor_absoluteY="116dp" />
 
@@ -297,7 +284,6 @@
             android:layout_marginTop="15dp"
             android:layout_marginEnd="15dp"
             android:layout_marginRight="15dp"
-            android:layout_marginBottom="15dp"
             android:orientation="horizontal">
 
             <TextView
@@ -317,7 +303,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_weight="2"
                 android:textColor="#000000"
-                android:textSize="15dp"
+                android:textSize="17dp"
                 tools:layout_editor_absoluteX="159dp"
                 tools:layout_editor_absoluteY="116dp" />
 
@@ -351,7 +337,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_weight="2"
                 android:textColor="#000000"
-                android:textSize="15dp"
+                android:textSize="17dp"
                 tools:layout_editor_absoluteX="159dp"
                 tools:layout_editor_absoluteY="116dp" />
 

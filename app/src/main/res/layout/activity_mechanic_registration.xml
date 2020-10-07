@@ -240,21 +240,23 @@
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_marginBottom="20dp"
-            android:weightSum="3">
+            android:weightSum="3"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnNextMechanic"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/buttonBackground"
+                android:text="@string/next" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="28dp"
+                android:layout_height="44dp"
                 android:layout_marginTop="10dp">
 
-                <Button
-                    android:id="@+id/btnNext"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:background="@color/buttonBackground"
-                    android:text="@string/next" />
             </RelativeLayout>
         </LinearLayout>
+
     </LinearLayout>
 </ScrollView>
